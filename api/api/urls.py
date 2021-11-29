@@ -25,6 +25,7 @@ urlpatterns = [
     path('checkserver/', index, name='index'),
     path('auth/', include('authapp.urls')),
     path('', include('chat.urls')),
+    path('email/', include('email.urls'))
 ]
 
 if settings.DEBUG:
