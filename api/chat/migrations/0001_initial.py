@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PublicChatRoom',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=225, unique=True)),
                 ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
@@ -25,11 +26,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PublicChatMessage',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
                 ('content', models.TextField()),
-                ('room', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='chat.publicchatroom')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('room', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='chat.publicchatroom')),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
