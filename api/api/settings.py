@@ -39,6 +39,7 @@ ALLOWED_HOSTS.extend(
 INSTALLED_APPS = [
     'authapp',
     'chat',
+    'email',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -172,4 +173,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'noreply.suporte.meth@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
