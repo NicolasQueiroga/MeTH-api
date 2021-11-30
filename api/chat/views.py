@@ -11,12 +11,16 @@ class MessageViews(viewsets.ModelViewSet):
     serializer_class = MessageSerializer
 
     def get_queryset(self):
-        user = self.request.query_params.get('user')
-        if user:
-            queryset = Message.objects.filter(user=(user))
+        from_ = self.request.query_params.get('from')
+        to = self.request.query_params.get('to')
+        if from_ and to:
+            print(from_, to)
+            # queryset = Message.objects.filter(sender_id=from_)
+            self.serializer_class.sender = from_
+            self.serializer_class.receiver = to
         else:
             queryset = Message.objects.all()
-        return queryset
+            return queryset
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

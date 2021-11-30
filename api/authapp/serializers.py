@@ -4,6 +4,7 @@ from .models import *
 
 
 class UserCreateSerializer(UserCreateSerializer):
+    online = serializers.ReadOnlyField(source='user.online')
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ('id', 'email', 'username', 'password')
+        fields = ('id', 'email', 'username', 'password', 'online')
