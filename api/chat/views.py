@@ -17,9 +17,11 @@ class MessageView(APIView):
             sender_id=sender, receiver_id=receiver)
         messages_receiver = Message.objects.filter(
             sender_id=receiver, receiver_id=sender)
+
         for message in messages_receiver:
             message.is_read = True
             message.save()
+
         messages = sorted(
             chain(messages_sender, messages_receiver),
             key=attrgetter('timestamp'))
