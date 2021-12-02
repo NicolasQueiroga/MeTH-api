@@ -5,12 +5,7 @@ from django.core.mail import send_mail
 
 
 class EmailSendView(APIView):
-	"""
-    API to send suport Emails
-    """
 	def post(self, request, format=None):
-		# print(request.data['subject'])
-		# print(request.data['body'])
 		send_mail(
 			request.data['subject'],
 			request.data['body'],
