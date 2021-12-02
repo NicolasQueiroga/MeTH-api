@@ -2,13 +2,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 import datetime
-
 from django.core.cache import cache
 
 
 class User(AbstractUser):
     email = models.EmailField(verbose_name='email',
-                              max_length=225, unique=True)
+                              max_length=225,
+                              unique=True)
     REQUIRED_FIELDS = ['username']
     USERNAME_FIELD = 'email'
 
@@ -21,7 +21,8 @@ class User(AbstractUser):
     def online(self):
         if self.last_seen():
             now = datetime.datetime.now()
-            if now > (self.last_seen() + datetime.timedelta(seconds=settings.USER_ONLINE_TIMEOUT)):
+            if now > (self.last_seen() + datetime.timedelta(
+                    seconds=settings.USER_ONLINE_TIMEOUT)):
                 return False
             else:
                 return True
