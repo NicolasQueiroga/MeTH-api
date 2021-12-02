@@ -39,7 +39,7 @@ ALLOWED_HOSTS.extend(
 INSTALLED_APPS = [
     'authapp',
     'chat',
-    'email',
+    'emailapi',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
